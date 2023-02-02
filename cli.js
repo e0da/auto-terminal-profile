@@ -45,6 +45,14 @@ for (const mode of ['dark', 'light']) {
 		.action((profile) => setModeProfile({mode, profile}));
 }
 
+// FIXME: START HERE
+program
+	.command(`enable-sync-default`)
+	.description(`Set the Terminal profile to use in ${mode} mode`)
+	.argument('<profile>')
+	.action((profile) => setModeProfile({mode, profile}));
+// FIXME: END HERE
+
 program
 	.command('status')
 	.description('Show status and configuration')

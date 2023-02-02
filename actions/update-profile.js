@@ -1,5 +1,5 @@
 import darkMode from 'dark-mode';
-import {setTerminalProfile} from 'terminal-profile';
+import {setTerminalDefaultProfile, setTerminalProfile} from 'terminal-profile';
 import {config} from '../config.js';
 
 export async function updateProfile() {
@@ -13,5 +13,12 @@ export async function updateProfile() {
 
 	const mode = (await darkMode.isEnabled()) ? 'dark' : 'light';
 
-	await setTerminalProfile(config[`${mode}Profile`]);
+	const deps = [];
+	deps.push(setTerminalProfile(config[`${mode}Profile`]));
+
+	if (config.syncDefault) {
+		deps.push(setTerminalDefaultProfile(config[`${mode}Profile`]));
+	}
+
+	await Promise.all(deps);
 }

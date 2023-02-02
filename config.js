@@ -9,6 +9,7 @@ class Config {
 	keys = {
 		darkProfile: 'darkProfile',
 		lightProfile: 'lightProfile',
+		syncDefault: 'syncDefault',
 	};
 
 	/**
@@ -37,6 +38,20 @@ class Config {
 	 */
 	set lightProfile(profile) {
 		conf.set(this.keys.lightProfile, profile);
+	}
+
+	/**
+	 * @return {boolean}
+	 */
+	get syncDefault() {
+		return conf.get(this.keys.syncDefault);
+	}
+
+	/**
+	 * @param {boolean} value
+	 */
+	set syncDefault(value) {
+		conf.set(this.keys.syncDefault, value);
 	}
 }
 
