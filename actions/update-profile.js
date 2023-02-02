@@ -20,5 +20,5 @@ export async function updateProfile() {
 		deps.push(setTerminalDefaultProfile(config[`${mode}Profile`]));
 	}
 
-	await Promise.all(deps);
+	return Promise.all(deps);
 }
